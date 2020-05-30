@@ -9,6 +9,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
@@ -62,6 +63,7 @@ public class FirstAidDetailActivity extends AppCompatActivity {
                             JSONArray emergency_handling = response.getJSONArray("emergency_handling");
                             JSONArray qna = response.getJSONArray("qna");
                             String header_img = response.getString("header_img");
+                            Log.d(">>>", header_img);
 
                             int resID = getResources().getIdentifier(header_img, "drawable", "com.umn.imergency");
                             imageview_header.setImageResource(resID);

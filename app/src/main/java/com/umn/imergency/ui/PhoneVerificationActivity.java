@@ -129,6 +129,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         beginCountdownForRerequest();
     }
 
+
     private void beginCountdownForRerequest() {
         new CountDownTimer(60000, 1000) {
             int i=60;
@@ -151,26 +152,20 @@ public class PhoneVerificationActivity extends AppCompatActivity {
     }
 
     private void verifyOTP(String inputted_kode_otp) {
-//        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verification_id, inputted_kode_otp);
-//        auth.signInWithCredential(credential)
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if(task.isSuccessful()){
-//                            onSuccessOTPVerification();
-//                        }
-//                        else{
-//                            Toast.makeText(PhoneVerificationActivity.this, "Kode yang anda masukkan salah!", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                });
-        if(inputted_kode_otp.equals("757175")) {
-            onSuccessOTPVerification();
-        }
-        else{
-            Toast.makeText(PhoneVerificationActivity.this, "Kode yang anda masukkan salah!", Toast.LENGTH_SHORT).show();
-        }
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verification_id, inputted_kode_otp);
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            onSuccessOTPVerification();
+                        }
+                        else{
+                            Toast.makeText(PhoneVerificationActivity.this, "Kode yang anda masukkan salah!", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
     }
 
     private void onSuccessOTPVerification() {
